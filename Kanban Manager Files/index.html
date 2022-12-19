@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kanban Manager</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="style/placeholder.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body style="background-color: #FAFAFA;">
+<header>
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">O nas</h4>
+                    <p class="text-white">Aplikacja tworzona przez studenta pierwszego roku Teleinformatyki na
+                        Wydziale Elektrycznym ZUT. Celem projektu jest stworzenie aplikacji dla uczniów oraz innych
+                        studentów, która pozwoli na łatwe i przyjemne zarządzanie codziennymi zadaniami. Dzięki
+                        mojej aplikacji internetowej już nigdy nie zapomnisz o wykonaniu ważnych rzeczy, zadań i
+                        projektów! </p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-white">Kontakt</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-hover" style="text-decoration:none;"><i class="bi-facebook" style="font-size:20px; margin-right: 15px;"></i>Facebook</a>
+                        </li>
+                        <li><a href="#" class="text-white-hover" style="text-decoration:none;"><i class="bi-twitter" style="font-size:20px; margin-right: 15px;"></i>Twitter</a>
+                        </li>
+                        <li><a href="#" class="text-white-hover" style="text-decoration:none;"><i class="bi-envelope-fill" style="font-size:20px; margin-right: 15px;"></i>Adres E-mail</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-calendar-event-fill" viewBox="0 0 16 16" style="margin-right: 10px;">
+                    <path
+                            d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+                <strong>Kanban Manager</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Kanban Manager</h1>
+                <p class="lead text-muted">Wciąż zapominasz, co masz do zrobienia? <br><br> Nie potrafisz
+                    zorganizować swojego dnia? <br><br>Zarejestruj się już dziś, aby rozpocząć lepsze zarządzanie
+                    swoim czasem!</p>
+                <p>
+                    <a href="login.html" class="btn btn-primary my-2">Zaloguj się</a>
+                    <a href="register.php" class="btn btn-secondary my-2">Utwórz konto</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-5">
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="images/fastconfig.jpeg" alt="Dran&Drop" width="100%" height="225">
+
+                        <div class="card-body" style="border-top: 1px solid #DEDEDE">
+                            <p class="card-text text-center">Szybkie zarządzanie zadaniami oparte o
+                                metodę Drag and Drop.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="images/register.jpg" alt="Łatwa rejestracja" width="100%" height="225">
+                        <div class="card-body" style="border-top: 1px solid #DEDEDE">
+                            <p class="card-text text-center">Prosty i przyjemny proces rejestracji, który nie wymaga
+                                podawania wrażliwych danych.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="images/idea.jpg" alt="Intuicyjne zarządzanie" width="100%" height="225">
+
+                        <div class="card-body" style="border-top: 1px solid #DEDEDE">
+                            <p class="card-text text-center">Intuicyjne dodawanie i usuwanie zdarzeń, które
+                                opanujesz bez wiedzy technicznej.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="images/security.jpg" alt="Bezpieczeństwo danych" width="100%" height="225">
+
+                        <div class="card-body" style="border-top: 1px solid #DEDEDE">
+                            <p class="card-text text-center">Bezpieczeństwo twoich danych to nasz priorytet! Nie
+                                musisz obawiać się o nic!</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="images/contact.jpg" alt="Kontakt z developerem" width="100%" height="225">
+
+                        <div class="card-body" style="border-top: 1px solid #DEDEDE">
+                            <p class="card-text text-center">Szybki i łatwy kontakt z developerem poprzez prosty
+                                formularz. Jesteśmy zawsze w kontakcie! </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="images/ideaforus.jpg" alt="Propozycje od użytkowników" width="100%" height="225">
+
+                        <div class="card-body" style="border-top: 1px solid #DEDEDE">
+                            <p class="card-text text-center">Otwarci na wszelkie propozycje! Masz pytania lub
+                                propozycje? Zapraszamy w wiadomości prywatnej!</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div id="invisible_box" style="height: 150px"></div>
+<div class="bg-dark">
+    <footer class="py-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-white-hover">Strona główna</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-white-hover">O nas</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link px-2 text-white-hover">Kontakt</a></li>
+        </ul>
+        <p class="text-center text-white">&copy; 2022 Piotr Kowalski</p>
+    </footer>
+</div>
+</body>
+</html>

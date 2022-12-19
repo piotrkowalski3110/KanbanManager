@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kanban Manager</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="style/placeholder.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body style="background-color: #FAFAFA;">
+<header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">O nas</h4>
+          <p class="text-white">Aplikacja tworzona przez studenta pierwszego roku Teleinformatyki na
+            Wydziale Elektrycznym ZUT. Celem projektu jest stworzenie aplikacji dla uczniów oraz innych
+            studentów, która pozwoli na łatwe i przyjemne zarządzanie codziennymi zadaniami. Dzięki
+            mojej aplikacji internetowej już nigdy nie zapomnisz o wykonaniu ważnych rzeczy, zadań i
+            projektów! </p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Kontakt</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-hover" style="text-decoration:none;"><i class="bi-facebook" style="font-size:20px; margin-right: 15px;"></i>Facebook</a>
+            </li>
+            <li><a href="#" class="text-white-hover" style="text-decoration:none;"><i class="bi-twitter" style="font-size:20px; margin-right: 15px;"></i>Twitter</a>
+            </li>
+            <li><a href="#" class="text-white-hover" style="text-decoration:none;"><i class="bi-envelope-fill" style="font-size:20px; margin-right: 15px;"></i>Adres E-mail</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="index.html" class="navbar-brand d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+             class="bi bi-calendar-event-fill" viewBox="0 0 16 16" style="margin-right: 10px;">
+          <path
+                  d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
+        </svg>
+        <strong>Kanban Manager</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+              aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="mb-4" style="background-color: #ffffff; padding: 150px 130px 150px 130px; border-radius: 30px;">
+  <h2 class="h1-responsive font-weight-bold text-center my-4">Skontaktuj się z nami!</h2>
+  <p class="text-center w-responsive mx-auto mb-5">Prosta i szybka komunikacja przez formularz. Uzupełnij wszystkie pola, a my zajmiemy się twoim zgłoszeniem, gdy tylko będzie to możliwe!</p>
+
+  <div class="rowq">
+    <div class="mb-md-0 mb-5">
+      <form id="contact-form" name="contact-form" action="contact.php" method="POST">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="md-form mb-0">
+              <label for="name" class="">Twoje imie</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="Jan Kowalski">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="md-form mb-0">
+              <label for="email" class="">Twój adres mailowy</label>
+              <input type="text" id="email" name="email" class="form-control" placeholder="adres@domena.com">
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="md-form mb-0">
+              <label for="subject" class="">Temat</label>
+              <input type="text" id="subject" name="subject" class="form-control" placeholder="Temat">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="md-form">
+              <label for="message">Wiadomość</label>
+              <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" placeholder="Wiadomość..."></textarea>
+            </div>
+
+          </div>
+        </div>
+
+      </form>
+
+      <div class="text-center text-md-left" style="margin-top: 30px;">
+        <a class="btn btn-primary btn-lg" onclick="document.getElementById('contact-form').submit();">Wyślij</a>
+      </div>
+      <div class="status"></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="bg-dark">
+  <footer class="py-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="index.html" class="nav-link px-2 text-white-hover">Strona główna</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-white-hover">O nas</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link px-2 text-white-hover">Kontakt</a></li>
+    </ul>
+    <p class="text-center text-white">&copy; 2022 Piotr Kowalski</p>
+  </footer>
+</div>
+
+</div>
+</body>
+</html>

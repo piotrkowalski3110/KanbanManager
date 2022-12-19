@@ -1,0 +1,59 @@
+.menu {
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+}
+.menu li {
+  float: left;
+  list-style: none;
+  margin: 0;
+}
+.menu li a {
+  padding: 20px 15px;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  color: #003D6A;
+  text-transform: uppercase;
+}
+.menu li:hover a {
+    background-color: #003D6A;
+    color: #fff;
+    transition: 0.5s;
+}
+.menu li ul {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 100;
+  display: none;
+}
+.menu li:hover ul {
+  display: block;
+}
+.menu li ul li {
+  display: block;
+  width: 100%;
+}
+.menu li ul li a {
+  width: 100%;
+}
+.loginreg{
+    position: absolute !important;
+    right: 0;
+}
+body{
+    margin: 0 auto;
+    font-family:Arial, Helvetica, sans-serif
+}
+nav{
+    height: 85px;
+}
+.title{
+    font-size: 35px;
+    font-family: fantasy;
+    color:#002540;
+    padding-left: 75px;
+    padding-right: 75px;
+}
