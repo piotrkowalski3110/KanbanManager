@@ -24,6 +24,7 @@ if (!isset($_COOKIE["account"])) {
     <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="./style/kanban.css">
 </head>
 
 <script type="module">
@@ -43,19 +44,6 @@ if (!isset($_COOKIE["account"])) {
         modal.find('button#savechangesbtn').val(btnval)
     })
 </script>
-
-<style>
-    .cursor-grab {
-        cursor: -webkit-grab;
-        cursor: grab;
-    }
-    .tasks {
-        min-height: 450px;
-        -webkit-user-select: none; /* Safari */
-        -ms-user-select: none; /* IE 10 and IE 11 */
-        user-select: none; /* Standard syntax */
-    }
-</style>
 
 <body>
 
@@ -185,7 +173,7 @@ if (!isset($_COOKIE["account"])) {
                     echo '<div class="container py-5">';
                     echo '<div class="row">';
                     echo '<div class="col-12 col-lg-3">';
-                    echo '<div class="card mb-3">';
+                    echo '<div class="card mb-3 kanban-col">';
                     echo '<div class="card-header bg-light">';
                     echo '<h3 class="card-title h5 mb-1">';
                     echo 'Do zrobienia';
@@ -198,35 +186,47 @@ if (!isset($_COOKIE["account"])) {
                     echo '<div class="tasks">';
                     echo '<div class="card mb-3 cursor-grab" id="dragme">';
                     echo '<div class="card-body">';
+                    echo '<span class="badge bg-danger text-white mb-2">Bug</span>';
                     echo '<p class="mb-0">You can move these elements between the containers</p>';
-                    echo '<div class="text-right">';
-                    echo '<small class="text-muted mb-1 d-inline-block">25%</small>';
-                    echo '</div>';
-                    echo '<div class="progress" style="height: 5px;">';
-                    echo '<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>';
-                    echo '</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '<div class="card mb-3 cursor-grab">';
-                    echo '<img class="card-img-top" src="https://source.unsplash.com/sECcwm6BN8w/400x200" alt="Bootstrap Kanban Board" />';
                     echo '<div class="card-body">';
-                    echo '<span class="badge bg-primary text-white mb-2">On hold</span>';
                     echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
-                    echo '<div class="text-right">';
-                    echo '<small class="text-muted mb-1 d-inline-block">33%</small>';
-                    echo '</div>';
-                    echo '<div class="progress" style="height: 5px;">';
-                    echo '<div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>';
                     echo '</div>';
                     echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
                     echo '</div>';
                     echo '</div>';
-                    echo '<div class="btn btn-primary btn-block">Add task</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban">Add task</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '<div class="col-12 col-lg-3">';
-                    echo '<div class="card mb-3">';
+                    echo '<div class="card mb-3 kanban-col">';
                     echo '<div class="card-header bg-light">';
                     echo '<h3 class="card-title h5 mb-1">';
                     echo 'W trakcie';
@@ -239,34 +239,46 @@ if (!isset($_COOKIE["account"])) {
                     echo '<div class="tasks" id="progress">';
                     echo '<div class="card mb-3 cursor-grab">';
                     echo '<div class="card-body">';
-                    echo '<span class="badge bg-danger text-white mb-2">Bug</span>';
+                    echo '<span class="badge bg-warning text-white mb-2">Bug</span>';
                     echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
-                    echo '<div class="text-right">';
-                    echo '<small class="text-muted mb-1 d-inline-block">45%</small>';
                     echo '</div>';
-                    echo '<div class="progress" style="height: 5px;">';
-                    echo '<div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>';
                     echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-warning text-white mb-2">Bug</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-warning text-white mb-2">Bug</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-warning text-white mb-2">Bug</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-warning text-white mb-2">Bug</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
                     echo '</div>';
                     echo '</div>';
                     echo '<div class="card mb-3 cursor-grab">';
                     echo '<div class="card-body">';
                     echo '<p class="mb-0">Anything can be moved around. That includes images, links or any other nested elements.</p>';
-                    echo '<div class="text-right">';
-                    echo '<small class="text-muted mb-1 d-inline-block">75%</small>';
-                    echo '</div>';
-                    echo '<div class="progress" style="height: 5px;">';
-                    echo '<div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
-                    echo '</div>';
-                    echo '<div class="btn btn-primary btn-block">Add task</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban">Add task</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '<div class="col-12 col-lg-3">';
-                    echo '<div class="card mb-3">';
+                    echo '<div class="card mb-3 kanban-col">';
                     echo '<div class="card-header bg-light">';
                     echo '<h3 class="card-title h5 mb-1">';
                     echo 'W trakcie testów';
@@ -278,36 +290,47 @@ if (!isset($_COOKIE["account"])) {
                     echo '<div class="card-body">';
                     echo '<div class="tasks" id="completed">';
                     echo '<div class="card mb-3 cursor-grab">';
-                    echo '<img class="card-img-top" src="https://source.unsplash.com/zNRITe8NPqY/400x200" alt="Bootstrap Kanban Board" />';
                     echo '<div class="card-body">';
-                    echo '<span class="badge bg-warning text-white mb-2">Enhancement</span>';
+                    echo '<span class="badge bg-info text-white mb-2">Enhancement</span>';
                     echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
-                    echo '<div class="text-right">';
-                    echo '<small class="text-muted mb-1 d-inline-block">95%</small>';
                     echo '</div>';
-                    echo '<div class="progress" style="height: 5px;">';
-                    echo '<div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>';
                     echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-info text-white mb-2">Enhancement</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-info text-white mb-2">Enhancement</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-info text-white mb-2">Enhancement</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-info text-white mb-2">Enhancement</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
                     echo '</div>';
                     echo '</div>';
                     echo '<div class="card mb-3 cursor-grab">';
                     echo '<div class="card-body">';
                     echo '<p class="mb-0">You can move these elements between the containers</p>';
-                    echo '<div class="text-right">';
-                    echo '<small class="text-muted mb-1 d-inline-block">80%</small>';
-                    echo '</div>';
-                    echo '<div class="progress" style="height: 5px;">';
-                    echo '<div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
-                    echo '</div>';
-                    echo '<div class="btn btn-primary btn-block">Add task</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban">Add task</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '<div class="col-12 col-lg-3">';
-                    echo '<div class="card mb-3">';
+                    echo '<div class="card mb-3 kanban-col">';
                     echo '<div class="card-header bg-light">';
                     echo '<h3 class="card-title h5 mb-1">';
                     echo 'Ukończone';
@@ -320,29 +343,47 @@ if (!isset($_COOKIE["account"])) {
                     echo '<div class="tasks" id="progress">';
                     echo '<div class="card mb-3 cursor-grab">';
                     echo '<div class="card-body">';
-                    echo '<span class="badge bg-danger text-white mb-2">Bug</span>';
+                    echo '<span class="badge bg-success text-white mb-2">Bug</span>';
                     echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
-                    echo '<div class="text-right">';
-                    echo '<small class="text-muted mb-1 d-inline-block">45%</small>';
                     echo '</div>';
-                    echo '<div class="progress" style="height: 5px;">';
-                    echo '<div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>';
                     echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-success text-white mb-2">Bug</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-success text-white mb-2">Bug</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-success text-white mb-2">Bug</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-success text-white mb-2">Bug</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="card mb-3 cursor-grab">';
+                    echo '<div class="card-body">';
+                    echo '<span class="badge bg-success text-white mb-2">Bug</span>';
+                    echo '<p class="mb-0">Moving them anywhere else isnt quite possible</p>';
                     echo '</div>';
                     echo '</div>';
                     echo '<div class="card mb-3 cursor-grab">';
                     echo '<div class="card-body">';
                     echo '<p class="mb-0">Anything can be moved around. That includes images, links or any other nested elements.</p>';
-                    echo '<div class="text-right">';
-                    echo '<small class="text-muted mb-1 d-inline-block">75%</small>';
-                    echo '</div>';
-                    echo '<div class="progress" style="height: 5px;">';
-                    echo '<div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
-                    echo '</div>';
-                    echo '<div class="btn btn-primary btn-block">Add task</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban">Add task</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
