@@ -211,7 +211,7 @@ if (!isset($_COOKIE["account"])) {
                     }
                     //
                     echo '</div>';
-                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="to_do">Add task</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="to_do">Dodaj zadanie</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -247,7 +247,7 @@ if (!isset($_COOKIE["account"])) {
                     }
                     //
                     echo '</div>';
-                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="during">Add task</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="during">Dodaj zadanie</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -283,7 +283,7 @@ if (!isset($_COOKIE["account"])) {
                     }
                     //
                     echo '</div>';
-                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="in_tests">Add task</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="in_tests">Dodaj zadanie</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -319,7 +319,7 @@ if (!isset($_COOKIE["account"])) {
                     }
                     //
                     echo '</div>';
-                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="done">Add task</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="done">Dodaj zadanie</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
