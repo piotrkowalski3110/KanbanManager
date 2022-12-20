@@ -43,6 +43,13 @@ if (!isset($_COOKIE["account"])) {
         modal.find('select#task_status_edit').val(taskstatus)
         modal.find('button#savechangesbtn').val(btnval)
     })
+
+    $('#addtask').on('show.bs.modal', function (ev) {
+        var button = $(ev.relatedTarget)
+        var taskstatus = button.data('taskstatus')
+        var modal = $(this)
+        modal.find('select#task_status').val(taskstatus)
+    })
 </script>
 
 <body>
@@ -188,15 +195,15 @@ if (!isset($_COOKIE["account"])) {
                     $sql = "SELECT * FROM $currtable WHERE status = 'to_do'";
                     $to_do = $db->query($sql);
                     if ($to_do->num_rows > 0) {
-                        while($row = $to_do->fetch_assoc()){
+                        while ($row = $to_do->fetch_assoc()) {
                             echo '<div class="card mb-3 cursor-grab">';
                             echo '<div class="card-body">';
-                            echo '<span class="badge bg-danger text-white mb-2">'.$row["task_name"].'</span>';
-                            echo '<p class="mb-0">'.$row["task_desc"].'</p>';
+                            echo '<span class="badge bg-danger text-white mb-2">' . $row["task_name"] . '</span>';
+                            echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
                             echo '<div class="date-cont" style="border-top: 1px dashed black; margin-top: 15px;">';
-                            echo '<small>Created at:'.$row["task_add_date"].'</small>';
+                            echo '<small>Created at:' . $row["task_add_date"] . '</small>';
                             echo '<br>';
-                            echo '<small>Endline:'.$row["task_end_date"].'</small>';
+                            echo '<small>Endline:' . $row["task_end_date"] . '</small>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
@@ -204,7 +211,7 @@ if (!isset($_COOKIE["account"])) {
                     }
                     //
                     echo '</div>';
-                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask">Add task</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="to_do">Add task</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -224,15 +231,15 @@ if (!isset($_COOKIE["account"])) {
                     $sql = "SELECT * FROM $currtable WHERE status = 'during'";
                     $during = $db->query($sql);
                     if ($during->num_rows > 0) {
-                        while($row = $during->fetch_assoc()){
+                        while ($row = $during->fetch_assoc()) {
                             echo '<div class="card mb-3 cursor-grab">';
                             echo '<div class="card-body">';
-                            echo '<span class="badge bg-warning text-white mb-2">'.$row["task_name"].'</span>';
-                            echo '<p class="mb-0">'.$row["task_desc"].'</p>';
+                            echo '<span class="badge bg-warning text-white mb-2">' . $row["task_name"] . '</span>';
+                            echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
                             echo '<div class="date-cont" style="border-top: 1px dashed black; margin-top: 15px;">';
-                            echo '<small>Created at:'.$row["task_add_date"].'</small>';
+                            echo '<small>Created at:' . $row["task_add_date"] . '</small>';
                             echo '<br>';
-                            echo '<small>Endline:'.$row["task_end_date"].'</small>';
+                            echo '<small>Endline:' . $row["task_end_date"] . '</small>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
@@ -240,7 +247,7 @@ if (!isset($_COOKIE["account"])) {
                     }
                     //
                     echo '</div>';
-                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask">Add task</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="during">Add task</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -260,15 +267,15 @@ if (!isset($_COOKIE["account"])) {
                     $sql = "SELECT * FROM $currtable WHERE status = 'in_tests'";
                     $in_tests = $db->query($sql);
                     if ($in_tests->num_rows > 0) {
-                        while($row = $in_tests->fetch_assoc()){
+                        while ($row = $in_tests->fetch_assoc()) {
                             echo '<div class="card mb-3 cursor-grab">';
                             echo '<div class="card-body">';
-                            echo '<span class="badge bg-info text-white mb-2">'.$row["task_name"].'</span>';
-                            echo '<p class="mb-0">'.$row["task_desc"].'</p>';
+                            echo '<span class="badge bg-info text-white mb-2">' . $row["task_name"] . '</span>';
+                            echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
                             echo '<div class="date-cont" style="border-top: 1px dashed black; margin-top: 15px;">';
-                            echo '<small>Created at:'.$row["task_add_date"].'</small>';
+                            echo '<small>Created at:' . $row["task_add_date"] . '</small>';
                             echo '<br>';
-                            echo '<small>Endline:'.$row["task_end_date"].'</small>';
+                            echo '<small>Endline:' . $row["task_end_date"] . '</small>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
@@ -276,7 +283,7 @@ if (!isset($_COOKIE["account"])) {
                     }
                     //
                     echo '</div>';
-                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="during">Add task</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="in_tests">Add task</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -296,15 +303,15 @@ if (!isset($_COOKIE["account"])) {
                     $sql = "SELECT * FROM $currtable WHERE status = 'done'";
                     $done = $db->query($sql);
                     if ($done->num_rows > 0) {
-                        while($row = $done->fetch_assoc()){
+                        while ($row = $done->fetch_assoc()) {
                             echo '<div class="card mb-3 cursor-grab">';
                             echo '<div class="card-body">';
-                            echo '<span class="badge bg-success text-white mb-2">'.$row["task_name"].'</span>';
-                            echo '<p class="mb-0">'.$row["task_desc"].'</p>';
+                            echo '<span class="badge bg-success text-white mb-2">' . $row["task_name"] . '</span>';
+                            echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
                             echo '<div class="date-cont" style="border-top: 1px dashed black; margin-top: 15px;">';
-                            echo '<small>Created at:'.$row["task_add_date"].'</small>';
+                            echo '<small>Created at:' . $row["task_add_date"] . '</small>';
                             echo '<br>';
-                            echo '<small>Endline:'.$row["task_end_date"].'</small>';
+                            echo '<small>Endline:' . $row["task_end_date"] . '</small>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
@@ -312,7 +319,7 @@ if (!isset($_COOKIE["account"])) {
                     }
                     //
                     echo '</div>';
-                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask">Add task</div>';
+                    echo '<div class="btn btn-primary btn-block buttonAddKanban" data-bs-toggle="modal" data-bs-target="#addtask" data-taskstatus="done">Add task</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
