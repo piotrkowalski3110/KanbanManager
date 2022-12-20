@@ -10,21 +10,21 @@ if (!isset($_COOKIE["account"])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mój Panel</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style/placeholder.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link href="style/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style/kanban.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="style/placeholder.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" type="text/css">
+    <link rel="stylesheet" href="style/dashboard.css" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" type="text/css">
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="scripts/changepasswordvalidate.js" type="module"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="scripts/draggable.js"></script>
-    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <link rel="stylesheet" href="./style/kanban.css">
 </head>
 
 <script type="module">
@@ -50,7 +50,24 @@ if (!isset($_COOKIE["account"])) {
         var modal = $(this)
         modal.find('select#task_status').val(taskstatus)
     })
+
+    $(document).ready(function(){
+        $(".task-dnd").draggable({
+            containment: 'document',
+            helper: 'clone',
+            zIndex:10000,
+            appendTo: "body",
+            revert: "invalid"
+        });
+    });
 </script>
+
+<style>
+    .task-dnd.ui-draggable-dragging {
+        min-width: 275px;
+        max-width: 275px;
+    }
+</style>
 
 <body>
 
@@ -196,14 +213,14 @@ if (!isset($_COOKIE["account"])) {
                     $to_do = $db->query($sql);
                     if ($to_do->num_rows > 0) {
                         while ($row = $to_do->fetch_assoc()) {
-                            echo '<div class="card mb-3 cursor-grab">';
+                            echo '<div class="card mb-3 cursor-grab task-dnd">';
                             echo '<div class="card-body">';
                             echo '<span class="badge bg-danger text-white mb-2">' . $row["task_name"] . '</span>';
                             echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
                             echo '<div class="date-cont" style="border-top: 1px dashed black; margin-top: 15px;">';
-                            echo '<small>Created at:' . $row["task_add_date"] . '</small>';
+                            echo '<small>Created at: ' . $row["task_add_date"] . '</small>';
                             echo '<br>';
-                            echo '<small>Endline:' . $row["task_end_date"] . '</small>';
+                            echo '<small>Endline: ' . $row["task_end_date"] . '</small>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
@@ -232,14 +249,14 @@ if (!isset($_COOKIE["account"])) {
                     $during = $db->query($sql);
                     if ($during->num_rows > 0) {
                         while ($row = $during->fetch_assoc()) {
-                            echo '<div class="card mb-3 cursor-grab">';
+                            echo '<div class="card mb-3 cursor-grab task-dnd">';
                             echo '<div class="card-body">';
                             echo '<span class="badge bg-warning text-white mb-2">' . $row["task_name"] . '</span>';
                             echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
                             echo '<div class="date-cont" style="border-top: 1px dashed black; margin-top: 15px;">';
-                            echo '<small>Created at:' . $row["task_add_date"] . '</small>';
+                            echo '<small>Created at: ' . $row["task_add_date"] . '</small>';
                             echo '<br>';
-                            echo '<small>Endline:' . $row["task_end_date"] . '</small>';
+                            echo '<small>Endline: ' . $row["task_end_date"] . '</small>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
@@ -268,14 +285,14 @@ if (!isset($_COOKIE["account"])) {
                     $in_tests = $db->query($sql);
                     if ($in_tests->num_rows > 0) {
                         while ($row = $in_tests->fetch_assoc()) {
-                            echo '<div class="card mb-3 cursor-grab">';
+                            echo '<div class="card mb-3 cursor-grab task-dnd">';
                             echo '<div class="card-body">';
                             echo '<span class="badge bg-info text-white mb-2">' . $row["task_name"] . '</span>';
                             echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
                             echo '<div class="date-cont" style="border-top: 1px dashed black; margin-top: 15px;">';
-                            echo '<small>Created at:' . $row["task_add_date"] . '</small>';
+                            echo '<small>Created at: ' . $row["task_add_date"] . '</small>';
                             echo '<br>';
-                            echo '<small>Endline:' . $row["task_end_date"] . '</small>';
+                            echo '<small>Endline: ' . $row["task_end_date"] . '</small>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
@@ -304,14 +321,14 @@ if (!isset($_COOKIE["account"])) {
                     $done = $db->query($sql);
                     if ($done->num_rows > 0) {
                         while ($row = $done->fetch_assoc()) {
-                            echo '<div class="card mb-3 cursor-grab">';
+                            echo '<div class="card mb-3 cursor-grab task-dnd">';
                             echo '<div class="card-body">';
                             echo '<span class="badge bg-success text-white mb-2">' . $row["task_name"] . '</span>';
                             echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
                             echo '<div class="date-cont" style="border-top: 1px dashed black; margin-top: 15px;">';
-                            echo '<small>Created at:' . $row["task_add_date"] . '</small>';
+                            echo '<small>Created at: ' . $row["task_add_date"] . '</small>';
                             echo '<br>';
-                            echo '<small>Endline:' . $row["task_end_date"] . '</small>';
+                            echo '<small>Endline: ' . $row["task_end_date"] . '</small>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';

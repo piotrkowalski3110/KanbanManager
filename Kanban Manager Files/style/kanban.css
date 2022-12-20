@@ -1,7 +1,7 @@
 .cursor-grab {
-    cursor: -webkit-grab;
     cursor: grab;
 }
+
 .tasks {
     min-height: 450px;
     -webkit-user-select: none; /* Safari */
@@ -9,18 +9,18 @@
     user-select: none; /* Standard syntax */
     height: 540px;
     overflow: auto;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
-.tasks::-webkit-scrollbar{
+.tasks::-webkit-scrollbar {
     display: none;
 }
 
-.kanban-col{
+.kanban-col {
     background-color: #f4f4f4;
 }
 
-.buttonAddKanban{
+.buttonAddKanban {
     margin-top: 15px;
 }
