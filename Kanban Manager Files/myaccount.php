@@ -14,10 +14,12 @@ if (!isset($_COOKIE["account"])) {
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="style/placeholder.css" type="text/css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+          type="text/css">
     <link rel="stylesheet" href="style/dashboard.css" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          type="text/css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" type="text/css">
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -51,17 +53,31 @@ if (!isset($_COOKIE["account"])) {
         modal.find('select#task_status').val(taskstatus)
     })
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         $(".task-dnd").draggable({
             containment: 'document',
             helper: 'clone',
-            zIndex:10000,
+            zIndex: 10000,
             appendTo: "body",
             revert: "invalid"
         });
+        $(".tasks").droppable({
+            accept: ".task-dnd",
+            revert: true,
+            greedy: true,
+            tolerance: "pointer",
+            drop: function (event, ui) {
+                var drop_id = $(this).attr('id');
+                var id=$(ui.draggable).attr('id');
+                $.ajax({
+                    type: "POST",
+                    url: edittask.php,
+                    // tu skonczylem
+                })
+            }
+        });
     });
 </script>
-
 <style>
     .task-dnd.ui-draggable-dragging {
         min-width: 275px;
@@ -169,7 +185,8 @@ if (!isset($_COOKIE["account"])) {
         </nav>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <?php
                 if (filter_has_var(INPUT_GET, 'standard_view')) {
                     echo '<h1 class="h2">Podgląd standardowy</h1>';
@@ -207,13 +224,13 @@ if (!isset($_COOKIE["account"])) {
                     echo '</small>';
                     echo '</div>';
                     echo '<div class="card-body">';
-                    echo '<div class="tasks">';
+                    echo '<div class="tasks" id="tasksToDo">';
                     //to_do
                     $sql = "SELECT * FROM $currtable WHERE status = 'to_do'";
                     $to_do = $db->query($sql);
                     if ($to_do->num_rows > 0) {
                         while ($row = $to_do->fetch_assoc()) {
-                            echo '<div class="card mb-3 cursor-grab task-dnd">';
+                            echo '<div class="card mb-3 cursor-grab task-dnd" id="' . "TSK" . $row["id"] . '">';
                             echo '<div class="card-body">';
                             echo '<span class="badge bg-danger text-white mb-2">' . $row["task_name"] . '</span>';
                             echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
@@ -243,13 +260,13 @@ if (!isset($_COOKIE["account"])) {
                     echo '</small>';
                     echo '</div>';
                     echo '<div class="card-body">';
-                    echo '<div class="tasks" id="progress">';
+                    echo '<div class="tasks" id="tasksInProgress">';
                     //during
                     $sql = "SELECT * FROM $currtable WHERE status = 'during'";
                     $during = $db->query($sql);
                     if ($during->num_rows > 0) {
                         while ($row = $during->fetch_assoc()) {
-                            echo '<div class="card mb-3 cursor-grab task-dnd">';
+                            echo '<div class="card mb-3 cursor-grab task-dnd" id="' . "TSK" . $row["id"] . '">';
                             echo '<div class="card-body">';
                             echo '<span class="badge bg-warning text-white mb-2">' . $row["task_name"] . '</span>';
                             echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
@@ -279,13 +296,13 @@ if (!isset($_COOKIE["account"])) {
                     echo '</small>';
                     echo '</div>';
                     echo '<div class="card-body">';
-                    echo '<div class="tasks" id="completed">';
+                    echo '<div class="tasks" id="tasksInTests">';
                     //in_tests
                     $sql = "SELECT * FROM $currtable WHERE status = 'in_tests'";
                     $in_tests = $db->query($sql);
                     if ($in_tests->num_rows > 0) {
                         while ($row = $in_tests->fetch_assoc()) {
-                            echo '<div class="card mb-3 cursor-grab task-dnd">';
+                            echo '<div class="card mb-3 cursor-grab task-dnd" id="' . "TSK" . $row["id"] . '">';
                             echo '<div class="card-body">';
                             echo '<span class="badge bg-info text-white mb-2">' . $row["task_name"] . '</span>';
                             echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
@@ -315,13 +332,13 @@ if (!isset($_COOKIE["account"])) {
                     echo '</small>';
                     echo '</div>';
                     echo '<div class="card-body">';
-                    echo '<div class="tasks">';
+                    echo '<div class="tasks" id="tasksEnded">';
                     //done
                     $sql = "SELECT * FROM $currtable WHERE status = 'done'";
                     $done = $db->query($sql);
                     if ($done->num_rows > 0) {
                         while ($row = $done->fetch_assoc()) {
-                            echo '<div class="card mb-3 cursor-grab task-dnd">';
+                            echo '<div class="card mb-3 cursor-grab task-dnd" id="' . "TSK" . $row["id"] . '">';
                             echo '<div class="card-body">';
                             echo '<span class="badge bg-success text-white mb-2">' . $row["task_name"] . '</span>';
                             echo '<p class="mb-0">' . $row["task_desc"] . '</p>';
@@ -474,7 +491,8 @@ if (!isset($_COOKIE["account"])) {
         </main>
     </div>
 </div>
-<div class="modal fade" id="changeusernamemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="changeusernamemodal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <form action="changeusername.php" method="post">
@@ -492,7 +510,8 @@ if (!isset($_COOKIE["account"])) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zakmnij</button>
-                    <button type="submit" name="changeusernamebtn" id="changeusernamebtn" class="btn btn-primary">Zapisz
+                    <button type="submit" name="changeusernamebtn" id="changeusernamebtn"
+                            class="btn btn-primary">Zapisz
                         zmiany
                     </button>
                 </div>
@@ -501,7 +520,8 @@ if (!isset($_COOKIE["account"])) {
     </div>
 </div>
 <form action="changepassword.php" method="post">
-    <div class="modal fade" id="changepassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="changepassword" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -518,14 +538,16 @@ if (!isset($_COOKIE["account"])) {
 
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                            <input type="password" id="confirm_password" name="confirm_password" class="form-control"
+                            <input type="password" id="confirm_password" name="confirm_password"
+                                   class="form-control"
                                    placeholder="powtórz hasło" required/>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zakmnij</button>
-                    <button type="submit" id="changepasswordbtn" name="changepasswordbtn" class="btn btn-primary">Zapisz
+                    <button type="submit" id="changepasswordbtn" name="changepasswordbtn"
+                            class="btn btn-primary">Zapisz
                         zmiany
                     </button>
                 </div>
@@ -579,7 +601,8 @@ if (!isset($_COOKIE["account"])) {
 
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                            <input type="date" id="task_end_date_edit" name="task_end_date_edit" class="form-control"
+                            <input type="date" id="task_end_date_edit" name="task_end_date_edit"
+                                   class="form-control"
                                    min="<?= date('Y-m-d'); ?>" required/>
                         </div>
                     </div>
@@ -593,10 +616,12 @@ if (!isset($_COOKIE["account"])) {
                             </select>
                         </div>
                     </div>
-                    <!-- --></div><!-- -->
+                    <!-- --></div>
+                <!-- -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zakmnij</button>
-                    <button type="submit" id="savechangesbtn" name="savechangesbtn" class="btn btn-primary" value="">
+                    <button type="submit" id="savechangesbtn" name="savechangesbtn" class="btn btn-primary"
+                            value="">
                         Zapisz zmiany
                     </button>
                 </div>
@@ -615,14 +640,16 @@ if (!isset($_COOKIE["account"])) {
                 <div class="modal-body">
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                            <input id="task_name" name="task_name" type="text" placeholder="Nazwa" class="form-control"
+                            <input id="task_name" name="task_name" type="text" placeholder="Nazwa"
+                                   class="form-control"
                                    required/>
                         </div>
                     </div>
 
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                            <input type="text" id="task_desc" name="task_desc" class="form-control" placeholder="Opis"
+                            <input type="text" id="task_desc" name="task_desc" class="form-control"
+                                   placeholder="Opis"
                                    style="height: 90px !important;"/>
                         </div>
                     </div>
