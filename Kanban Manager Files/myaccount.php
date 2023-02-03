@@ -22,10 +22,9 @@ if (!isset($_COOKIE["account"])) {
           type="text/css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" type="text/css">
     <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="scripts/changepasswordvalidate.js" type="module"></script>
     <script src="scripts/draggable.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 </head>
 
@@ -67,16 +66,19 @@ if (!isset($_COOKIE["account"])) {
             greedy: true,
             tolerance: "pointer",
             drop: function (event, ui) {
-                var drop_id = $(this).attr('id');
-                var id=$(ui.draggable).attr('id');
+                var columnId = $(this).attr('id').split("Tasks_")[1];
+                var taskDropId = $(ui.draggable).attr('id').split("TSK")[1];
                 $.ajax({
                     type: "POST",
-                    url: edittask.php,
-                    // tu skonczylem
+                    url: "dragEdit.php",
+                    data: {dropHere: columnId, dropMe: taskDropId},
+                    success:function(){
+                        location.reload()
+                    }
                 })
             }
         });
-    });
+    })
 </script>
 <style>
     .task-dnd.ui-draggable-dragging {
@@ -224,7 +226,7 @@ if (!isset($_COOKIE["account"])) {
                     echo '</small>';
                     echo '</div>';
                     echo '<div class="card-body">';
-                    echo '<div class="tasks" id="tasksToDo">';
+                    echo '<div class="tasks" id="Tasks_to_do">';
                     //to_do
                     $sql = "SELECT * FROM $currtable WHERE status = 'to_do'";
                     $to_do = $db->query($sql);
@@ -260,7 +262,7 @@ if (!isset($_COOKIE["account"])) {
                     echo '</small>';
                     echo '</div>';
                     echo '<div class="card-body">';
-                    echo '<div class="tasks" id="tasksInProgress">';
+                    echo '<div class="tasks" id="Tasks_during">';
                     //during
                     $sql = "SELECT * FROM $currtable WHERE status = 'during'";
                     $during = $db->query($sql);
@@ -296,7 +298,7 @@ if (!isset($_COOKIE["account"])) {
                     echo '</small>';
                     echo '</div>';
                     echo '<div class="card-body">';
-                    echo '<div class="tasks" id="tasksInTests">';
+                    echo '<div class="tasks" id="Tasks_in_tests">';
                     //in_tests
                     $sql = "SELECT * FROM $currtable WHERE status = 'in_tests'";
                     $in_tests = $db->query($sql);
@@ -332,7 +334,7 @@ if (!isset($_COOKIE["account"])) {
                     echo '</small>';
                     echo '</div>';
                     echo '<div class="card-body">';
-                    echo '<div class="tasks" id="tasksEnded">';
+                    echo '<div class="tasks" id="Tasks_done">';
                     //done
                     $sql = "SELECT * FROM $currtable WHERE status = 'done'";
                     $done = $db->query($sql);
